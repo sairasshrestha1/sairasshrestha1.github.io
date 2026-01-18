@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Khushi Should Date Sairas</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fff0f6;
+      --card: #ffffff;
+      --pink: #ff69b4;
+      --text: #4a044e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding: 16px;
+      text-align: center;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 1.9rem;
+      margin: 0;
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card);
+      border-radius: 28px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(255,105,180,0.25);
+    }
+
+    .reason-number {
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 1.4rem;
+      color: var(--pink);
+      margin-bottom: 12px;
+    }
+
+    .content {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .images {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .images img {
+      width: 45%;
+      border-radius: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      font-family: 'Bubblegum Sans', cursive;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff69b4, #ff4fa3);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255,105,180,0.4);
+      margin-top: 10px;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Why you (Khushi) should date me (Sairas)</h1>
+</header>
+
+<main>
+  <div class="card">
+    <div class="reason-number" id="reasonTitle">✨ Welcome ✨</div>
+    <div class="content" id="reasonContent">
+      Click the start button to see the reasons 💗
+    </div>
+    <button onclick="nextReason()" id="nextBtn">Start</button>
+  </div>
+</main>
+
+<script>
+const reasons = [
+  { title: "#Reason 1", content: "We will make good looking kids 👶💖", images: true },
+  { title: "#Reason 2", content: "I'm a Newar, so easier to convince parents 😌", newar: true },
+  { title: "#Reason 3", content: "I can be very romantic 💌", romantic: true },
+  { title: "#Reason 4", content: "I’m a good listener so we can diss people you don’t like together 🤝", chugli: true },
+  { title: "#Reason 5", content: "I can do house chores like cooking and cleaning 🍳🧹", cooking: true },
+  { title: "#Reason 6", content: "I’ll help you with your college assignments 📚", study: true },
+  { title: "#Reason 7", content: "I will try making you laugh", meme: true },
+  { title: "#Reason 8", content: "I am very loyal 🐶💗", loyal:true },
+  { title: "#Reason 9", content: "I will learn to play Free Fire for you 🎮", gaming: true },
+  { title: "#Reason 10", content: "I can watch your favourite dramas with you and talk about them 🎬💕", drama: true },
+  { title: "#Reason 11", content: "I will try to lift your mood when you're sad.", sad: true }
+];
+
+let index = -1;
+let noCount = 0; // Track number of consecutive No's
+
+function nextReason() {
+  index++;
+
+  if (index >= reasons.length) {
+  document.getElementById("reasonTitle").innerText = "💗 The End 💗";
+  document.getElementById("reasonContent").innerHTML =
+    "So… coffee sometime? ☕<br><br>So… is it a yes or no?";
+
+  const btnContainer = document.getElementById("nextBtn").parentElement;
+  btnContainer.innerHTML = `
+    <button onclick="answer('yes')">Yes 💖</button>
+    <button onclick="answer('no')">No 😔</button>
+  `;
+  return;
+}
+
+
+  const r = reasons[index];
+  document.getElementById("reasonTitle").innerText = r.title;
+
+  let html = r.content;
+  let imagesHTML = '';
+
+  if (r.images) imagesHTML += `<img src="my_pic.jpg" alt="Me as a kid"><img src="her_pic.jpg" alt="Her as a kid">`;
+  if (r.meme) imagesHTML += `<img src="meme.jpg" alt="Meme">`;
+  if (r.chugli) imagesHTML += `<img src="whisper.jpeg" alt="chugli">`;
+  if (r.cooking) imagesHTML += `<img src="cooking.jpeg" alt="cooking">`;
+  if (r.study) imagesHTML += `<img src="study.jpeg" alt="study">`;
+  if (r.sad) imagesHTML += `<img src="sad.jpeg" alt="sad">`;
+  if (r.loyal) imagesHTML += `<img src="loyal.jpeg" alt="loyal">`;
+  if (r.romantic) imagesHTML += `<img src="romantic.jpeg" alt="romantic">`;
+  if (r.gaming) imagesHTML += `<img src="gaming.jpeg" alt="gaming">`;
+  if (r.drama) imagesHTML += `<img src="drama.jpeg" alt="drama">`;
+  if (r.newar) imagesHTML += `<img src="newar.jpg" alt="newar">`;
+
+  if (imagesHTML) html += `<div class="images">${imagesHTML}</div>`;
+
+  document.getElementById("reasonContent").innerHTML = html;
+  document.getElementById("nextBtn").innerText = "Next";
+}
+
+// Yes / No answer handler
+function answer(response) {
+  console.log("Khushi's answer:", response);
+
+  if(response === 'yes') {
+    // Celebration path
+    const overlay = document.createElement('div');
+    overlay.id = 'celebrationOverlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
+    overlay.style.zIndex = '9999';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.flexDirection = 'column';
+    overlay.style.color = '#fff';
+    overlay.style.fontSize = '2rem';
+    overlay.style.fontFamily = '"Bubblegum Sans", cursive';
+    overlay.innerHTML = "💖 Hello, My beautiful girlfriend. 💖<br>✨✨✨";
+    document.body.appendChild(overlay);
+
+    const canvas = document.createElement('canvas');
+    canvas.id = 'confettiCanvas';
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.pointerEvents = 'none';
+    overlay.appendChild(canvas);
+
+    startConfetti(canvas);
+    return;
+  }
+
+  // NO path logic
+  noCount++;
+  const btnContainer = document.querySelector(".card button")?.parentElement;
+
+  if(noCount < 5) {
+    document.getElementById("reasonContent").innerHTML =
+      `Are you sure? 🤔 (${noCount}/5)<br>Click No again if you really mean it.`;
+    
+    btnContainer.innerHTML = `
+      <button onclick="answer('yes')">Yes 💖</button>
+      <button onclick="answer('no')">No 😔</button>
+    `;
+  } else {
+    // After 5 No's, show white screen
+    document.body.innerHTML = '';
+    document.body.style.background = '#fff';
+    const message = document.createElement('div');
+    message.style.position = 'fixed';
+    message.style.top = '50%';
+    message.style.left = '50%';
+    message.style.transform = 'translate(-50%, -50%)';
+    message.style.fontFamily = '"Bubblegum Sans", cursive';
+    message.style.fontSize = '2rem';
+    message.style.color = '#4a044e';
+    message.style.textAlign = 'center';
+    message.innerText = "OK :( Maybe next time...";
+    document.body.appendChild(message);
+  }
+}
+
+// Confetti animation
+function startConfetti(canvas){
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const confetti = [];
+  const colors = ['#ff69b4', '#ff4fa3', '#ffd700', '#00ffff', '#ff6347'];
+
+  for(let i=0; i<150; i++){
+    confetti.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height- canvas.height,
+      r: Math.random()*6+2,
+      d: Math.random()*20+10,
+      color: colors[Math.floor(Math.random()*colors.length)],
+      tilt: Math.random()*10-10,
+      tiltAngleIncremental: Math.random()*0.07+0.05,
+      tiltAngle: 0
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    confetti.forEach((c,i)=>{
+      ctx.beginPath();
+      ctx.lineWidth = c.r;
+      ctx.strokeStyle = c.color;
+      ctx.moveTo(c.x + c.tilt + c.r/2, c.y);
+      ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r/2);
+      ctx.stroke();
+
+      c.tiltAngle += c.tiltAngleIncremental;
+      c.y += (Math.cos(c.d)+3+c.r/2)/2;
+      c.tilt = Math.sin(c.tiltAngle) * 15;
+
+      if(c.y > canvas.height){
+        confetti[i] = {...c, y: -10, x: Math.random()*canvas.width };
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+}
+</script>
+
+</body>
+</html>
